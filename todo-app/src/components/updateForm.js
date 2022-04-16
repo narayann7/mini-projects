@@ -6,13 +6,12 @@ function UpdateForm({ updateTodoText, todo }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim() !== "") {
-        updateTodoText({
-            id: todo.id,
-          text: input.replace(/\s+/g, " ").trim(),
-        });
-        setInput("");
-      }
-  
+      updateTodoText({
+        id: todo.id,
+        text: input.replace(/\s+/g, " ").trim(),
+      });
+      setInput("");
+    }
   };
 
   const handleChange = (e) => {

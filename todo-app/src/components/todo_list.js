@@ -1,3 +1,4 @@
+import { Paper, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TodoForm from "./forms";
 import Todo from "./todo";
@@ -36,23 +37,36 @@ function Todo_list() {
     }
     setTodos(newTodo);
     setIsUpdate(-1);
-
   };
 
   return (
-    <div>
-      <h1>My Todo</h1>
-      <TodoForm onSubmit={addTodo} />
-      {isUpdate === -1 ? (
-        <Todo todos={todos} removeTodo={removeTodo} updateTodo={updateTodo} />
-      ) : (
-        <UpdateForm
-          updateTodoText={updateTodoText}
-        
-          todo={todos[isUpdate]}
-        />
-      )}
-    </div>
+    <main
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#060608",
+
+        height: "100vh",
+        width: "100vw"
+      }}
+    >
+      <Paper
+        sx={{
+          height: "70vh",
+          width: "40vw",
+        }}
+      >
+        <h1>My Todo</h1>
+        <TodoForm onSubmit={addTodo} />
+        {isUpdate === -1 ? (
+          <Todo todos={todos} removeTodo={removeTodo} updateTodo={updateTodo} />
+        ) : (
+          <UpdateForm updateTodoText={updateTodoText} todo={todos[isUpdate]} />
+        )}
+      </Paper>
+    </main>
   );
 }
 
