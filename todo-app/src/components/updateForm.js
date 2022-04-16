@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 
-function TodoForm({ onSubmit }) {
-  const [input, setInput] = useState("");
+function UpdateForm({ updateTodoText, todo }) {
+  const [input, setInput] = useState(todo.text);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.trim() !== "") {
-      onSubmit({
-        id: Math.floor(Math.random() * 1000),
-        text: input.replace(/\s+/g, " ").trim(),
-      });
-      setInput("");
-    }
+        updateTodoText({
+            id: todo.id,
+          text: input.replace(/\s+/g, " ").trim(),
+        });
+        setInput("");
+      }
+  
   };
 
   const handleChange = (e) => {
@@ -23,14 +24,14 @@ function TodoForm({ onSubmit }) {
       <input
         className="todo_input"
         name="text"
-        placeholder="Enter your todo"
+        placeholder="Update your todo"
         onChange={handleChange}
         value={input}
         type="text"
       />
-      <button className="todo_button">add</button>
+      <button className="todo_button">update</button>
     </form>
   );
 }
 
-export default TodoForm;
+export default UpdateForm;

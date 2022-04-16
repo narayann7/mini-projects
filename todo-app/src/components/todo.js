@@ -1,16 +1,19 @@
-import React from 'react'
+import React from "react";
+import { MdDelete } from "react-icons/md";
+import { FiEdit2 } from "react-icons/fi";
 
-function Todo({ todos, removeTodo }) {
+function Todo({ todos, removeTodo ,updateTodo}) {
   return todos.map((todo, index) => (
+    <div key={todo.id}>
+      <h3>
+        {todo.text}
+        <MdDelete onClick={() => removeTodo(index)} />
+        <FiEdit2 onClick={() => updateTodo(index)} />
 
-    <div key={todo.id} >
-
-      <h3>{todo.text}</h3>
-
-
-
+      </h3>
+     
     </div>
   ));
 }
 
-export default Todo
+export default Todo;
