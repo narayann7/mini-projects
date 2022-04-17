@@ -1,3 +1,4 @@
+import { Button, FormControl, OutlinedInput } from "@mui/material";
 import React, { useState } from "react";
 
 function TodoForm({ onSubmit }) {
@@ -19,18 +20,66 @@ function TodoForm({ onSubmit }) {
   };
 
   return (
-    <form className="todo_form" onSubmit={handleSubmit}>
-      <input
-        className="todo_input"
+    <FormControl
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: "1.5vh",
+      }}
+      onSubmit={handleSubmit}
+    >
+      <OutlinedInput
+        sx={{
+          width: "20vw",
+          height: "7vh",
+        }}
+
+
+        
+        style={{
+          backgroundColor: "#1F2232",
+          color: "#ffffff",
+          "& 	.MuiOutlinedInput-input": {
+            backgroundColor: "#ffffff",
+
+          },
+       
+        }}
+
         name="text"
         placeholder="Enter your todo"
         onChange={handleChange}
         value={input}
         type="text"
+        
       />
-      <button className="todo_button">add</button>
-    </form>
+      <Button
+        sx={{
+          height: "7vh",
+        }}
+        variant="contained"
+        style={{
+          marginLeft: "1vw",
+          backgroundColor: "#1F2232",
+        }}
+      >
+        add
+      </Button>
+    </FormControl>
   );
 }
 
 export default TodoForm;
+//   <form className="todo_form" onSubmit={handleSubmit}>
+//   <input
+// className="todo_input"
+// name="text"
+// placeholder="Enter your todo"
+// onChange={handleChange}
+// value={input}
+// type="text"
+//   />
+//   <button className="todo_button">add</button>
+// </form>

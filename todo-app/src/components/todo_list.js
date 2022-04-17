@@ -1,4 +1,4 @@
-import { Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TodoForm from "./forms";
 import Todo from "./todo";
@@ -40,33 +40,51 @@ function Todo_list() {
   };
 
   return (
-    <main
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#060608",
-
-        height: "100vh",
-        width: "100vw"
-      }}
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      height={"100vh"}
+      width={"100vw"}
+      bgcolor={"#1F2232"}
     >
       <Paper
         sx={{
           height: "70vh",
           width: "40vw",
         }}
-      >
-        <h1>My Todo</h1>
-        <TodoForm onSubmit={addTodo} />
+
+        style={{
+          overflow: "auto",
+          backgroundColor: "#596475",
+        }}
+>
+        <Box
+          sx={{
+            height: "33%",
+            width: "40vw",
+          }}
+          display={"flex"}
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          bgcolor={"#596475"}
+        >
+          <Typography
+          color={"1F2232"}
+          fontFamily={"Popins"} fontSize={"30px"}>
+            My Todo's
+          </Typography>
+          <TodoForm onSubmit={addTodo} />
+        </Box>
         {isUpdate === -1 ? (
           <Todo todos={todos} removeTodo={removeTodo} updateTodo={updateTodo} />
         ) : (
           <UpdateForm updateTodoText={updateTodoText} todo={todos[isUpdate]} />
         )}
       </Paper>
-    </main>
+    </Box>
   );
 }
 

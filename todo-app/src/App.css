@@ -1,0 +1,24 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  html, body, #root {
+    padding: 0px !important;;
+    margin: 0px !important;;
+  
+  }
+  
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }
+  
+  :root {
+  --bg: #1F2232
+  --bg2: #596475
+  --purple:#BC9EC1
+  --purple2:#E3BAC6
+  --purple2:#FDE8E9
+
+
+
+  }
