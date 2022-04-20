@@ -1,6 +1,11 @@
-import { Button, FormControl, OutlinedInput } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
 
+const TodoField = styled(TextField)(({ theme }) => ({
+  width: "20vw",
+  variant: "outlined",
+}));
 function TodoForm({ onSubmit }) {
   const [input, setInput] = useState("");
 
@@ -20,7 +25,7 @@ function TodoForm({ onSubmit }) {
   };
 
   return (
-    <FormControl
+    <form
       style={{
         display: "flex",
         flexDirection: "row",
@@ -30,56 +35,31 @@ function TodoForm({ onSubmit }) {
       }}
       onSubmit={handleSubmit}
     >
-      <OutlinedInput
-        sx={{
-          width: "20vw",
-          height: "7vh",
-        }}
-
-
-        
-        style={{
-          backgroundColor: "#1F2232",
-          color: "#ffffff",
-          "& 	.MuiOutlinedInput-input": {
-            backgroundColor: "#ffffff",
-
-          },
-       
-        }}
-
+      <TodoField
+        label="Enter your todo"
         name="text"
         placeholder="Enter your todo"
         onChange={handleChange}
         value={input}
         type="text"
-        
+        color="warning"
       />
+
       <Button
         sx={{
-          height: "7vh",
+          height: "6vh",
         }}
         variant="contained"
         style={{
           marginLeft: "1vw",
           backgroundColor: "#1F2232",
+          color: "#FDE8E9",
         }}
       >
         add
       </Button>
-    </FormControl>
+    </form>
   );
 }
 
 export default TodoForm;
-//   <form className="todo_form" onSubmit={handleSubmit}>
-//   <input
-// className="todo_input"
-// name="text"
-// placeholder="Enter your todo"
-// onChange={handleChange}
-// value={input}
-// type="text"
-//   />
-//   <button className="todo_button">add</button>
-// </form>
