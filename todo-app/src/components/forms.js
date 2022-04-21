@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, Container, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
@@ -25,26 +25,35 @@ function TodoForm({ onSubmit }) {
   };
 
   return (
-    <form
+    <Container
       style={{
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "space-between",
         marginTop: "1.5vh",
+        width: "28vw",
       }}
-      onSubmit={handleSubmit}
     >
-      <TodoField
-        label="Enter your todo"
-        name="text"
-        size="small"
-        placeholder="Enter your todo"
-        onChange={handleChange}
-        value={input}
-        type="text"
-        color="warning"
-      />
+      <form
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+        onSubmit={handleSubmit}
+      >
+        <TodoField
+          label="Enter your todo"
+          name="text"
+          size="small"
+          placeholder="Enter your todo"
+          onChange={handleChange}
+          value={input}
+          type="text"
+          color="warning"
+        />
+      </form>
 
       <Button
         onClick={handleSubmit}
@@ -53,14 +62,14 @@ function TodoForm({ onSubmit }) {
         }}
         variant="contained"
         style={{
-          marginLeft: "1vw",
+          marginLeft: "2vw",
           backgroundColor: "#1F2232",
           color: "#FDE8E9",
         }}
       >
         add
       </Button>
-    </form>
+    </Container>
   );
 }
 
