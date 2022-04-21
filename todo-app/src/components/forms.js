@@ -38,6 +38,7 @@ function TodoForm({ onSubmit }) {
       <TodoField
         label="Enter your todo"
         name="text"
+        size="small"
         placeholder="Enter your todo"
         onChange={handleChange}
         value={input}
@@ -46,8 +47,9 @@ function TodoForm({ onSubmit }) {
       />
 
       <Button
+        onClick={handleSubmit}
         sx={{
-          height: "6vh",
+          height: "5.5vh",
         }}
         variant="contained"
         style={{

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 
 const TodoField = styled(TextField)(({ theme }) => ({
-  width: "20vw",
+  width: "18vw",
   variant: "outlined",
 
 }));
@@ -39,6 +39,7 @@ function UpdateForm({ updateTodoText, todo }) {
     >
       <TodoField
         className="todo_input"
+        size="small"
         name="text"
         label="Update your todo"
         placeholder="Update your todo"
@@ -49,8 +50,9 @@ function UpdateForm({ updateTodoText, todo }) {
 
       />
       <Button
+            onClick={handleSubmit}
         sx={{
-          height: "6vh",
+          height: "5.5vh",
         }}
         variant="contained"
         style={{
