@@ -3,16 +3,17 @@ const app = express();
 const passport = require("passport");
 const cors = require("cors");
 const authRoute = require("./routes/auth_routes");
-var cookieSession = require('cookie-session')
+var cookieSession = require("cookie-session");
 require("./services/passport");
 require("dotenv").config();
 
-
-app.use(cookieSession({
-  name: 'session',
-  keys: ["catboy"],
-  maxAge: 24 * 60 * 60 * 100 
-}))
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["catboy"],
+    maxAge: 24 * 60 * 60 * 100,
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -26,10 +27,12 @@ app.use(
 
 app.use("/auth", authRoute);
 app.get("/", (req, res) => {
-  res.send("http://localhost:5000/auth/google");
+  res.json({
+    name: "catboy",
+    message: "Welcome to the auth system",
+  });
 });
 
-app.listen(5000, () => {
-  console.log("server is running on port 5000");
+app.listen(process.env.PORT || 5000, () => {
+  console.log("server is running on port 5000...");
 });
-
