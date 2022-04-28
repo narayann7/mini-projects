@@ -2,18 +2,17 @@ const express = require("express");
 const app = express();
 const passport = require("passport");
 const cors = require("cors");
-const authRoute = require("./auth_routes");
-var session = require('express-session')
-require("./passport");
+const authRoute = require("./routes/auth_routes");
+var cookieSession = require('cookie-session')
+require("./services/passport");
 require("dotenv").config();
-app.use(express.json());
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
-}))
 
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["catboy"],
+  maxAge: 24 * 60 * 60 * 100 
+}))
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -31,6 +30,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(5000, () => {
-  console.log("server is running on port 3000");
+  console.log("server is running on port 5000");
 });
 
