@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import api from "../services/axios_api";
-import { clientBaseUrl } from "../utility/constants";
+import { clientBaseUrl, serverBaseUrl } from "../utility/constants";
 
 function Home() {
+  const logout = () => {
+    window.open(`${serverBaseUrl}/auth/logout`, "_self");
+  };
   useEffect(() => {
     api
       .get("/auth")
@@ -16,7 +19,12 @@ function Home() {
         console.log(err);
       });
   }, []);
-  return <div>home</div>;
+  return (
+    <div>
+      {" "}
+      <button onClick={logout}>logout</button>
+    </div>
+  );
 }
 
 export default Home;

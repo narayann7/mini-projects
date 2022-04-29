@@ -6,7 +6,7 @@ const google_auth_controller = {
   }),
 
   googleCallback: passport.authenticate("google", {
-    successRedirect: "/",
+    successRedirect: process.env.clientBaseUrl,
     failureRedirect: "/login/failed",
   }),
 

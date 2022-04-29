@@ -32,6 +32,17 @@ app.get("/", (req, res) => {
     message: "Welcome to the auth system",
   });
 });
+app.get("/test", (req, res) => {
+
+    console.log(req.user);
+
+
+  res.json({
+    name: "catboy",
+    message: "Welcome to the auth system",
+  });
+});
+
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("server is running on port 5000...");
