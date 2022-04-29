@@ -1,13 +1,25 @@
 import { React, useState, useEffect } from "react";
 import api from "../services/axios_api";
-
-function login() {
+import { serverBaseUrl, clientBaseUrl } from "../utility/constants";
+function Login() {
   const googleSignIn = () => {
-    // window.open("http://localhost:5000/auth/google", "_self");
+    window.open(`${serverBaseUrl}/auth/google`, "_self");
     // window.open("http://localhost:5000/auth", "_self");
-console.log(process.env.clientBaseUrl);
   };
 
+  useEffect(() => {
+    api
+      .get("/auth")
+      .then((res) => {
+        if (res.status === 200) {
+        } else {
+          window.open(`${clientBaseUrl}/`, "_self");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div>
       <button onClick={googleSignIn}>google</button>
@@ -15,4 +27,4 @@ console.log(process.env.clientBaseUrl);
   );
 }
 
-export default login;
+export default Login;
