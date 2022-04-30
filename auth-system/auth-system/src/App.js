@@ -3,7 +3,7 @@ import Login from "./components/login";
 import Home from "./components/home";
 import { Routes, Route, Navigate } from "react-router-dom";
 import api from "./services/axios_api";
-
+import "./App.css";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
