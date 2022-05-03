@@ -1,5 +1,4 @@
 const passport = require("passport");
-const successRedirect="localhost:3000"
 const google_auth_controller = {
   loginWithGoogle: passport.authenticate("google", {
     scope: ["profile", "email"],
@@ -9,8 +8,6 @@ const google_auth_controller = {
     successRedirect: process.env.clientBaseUrl,
     failureRedirect: "/login/failed",
   }),
-
-
 };
 
 module.exports = google_auth_controller;

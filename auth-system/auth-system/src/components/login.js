@@ -1,9 +1,19 @@
 import { React, useState, useEffect } from "react";
 import api from "../services/axios_api";
 import { Box, Card, Typography } from "@mui/material/";
-import { serverBaseUrl, clientBaseUrl ,} from "../utility/constants";
+import styles from "./styles.js";
+import { serverBaseUrl, clientBaseUrl } from "../utility/constants";
+import {
+  AiOutlineGoogle,
+  AiFillGithub,
+  AiOutlineTwitter,
+} from "react-icons/ai";
 
-import { AiOutlineGoogle, AiFillGithub,AiOutlineTwitter } from "react-icons/ai";
+var BgBox = styles.BgBox;
+var CenterCard = styles.CenterCard;
+var CardButton = styles.CardButton;
+
+
 function Login() {
   const googleSignIn = () => {
     window.open(`${serverBaseUrl}/auth/google`, "_self");
@@ -13,8 +23,7 @@ function Login() {
   };
   const twitterSignIn = () => {
     window.open(`${serverBaseUrl}/auth/twitter`, "_self");
-  }
-
+  };
 
   useEffect(() => {
     api
@@ -30,126 +39,85 @@ function Login() {
       });
   }, []);
   return (
-    <div>
-      <Box
-        style={{
-          height: "100vh",
-          width: "100vw",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#FFE1C6",
-        }}
-      >
-        <Card
+    <BgBox>
+      <CenterCard variant="outlined">
+        <CardButton
+          onClick={googleSignIn}
           style={{
-            height: "40vh",
-            width: "20vw",
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "40px",
-            alignItems: "center",
-          flexDirection: "column",
+            backgroundColor: "#af3b2f",
           }}
           variant="outlined"
         >
-          <Card
-            onClick={googleSignIn}
+          <AiOutlineGoogle
             style={{
-              height: "8vh",
-              backgroundColor: "#af3b2f",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "15vw",
+              color: "#ffffff",
+              fontSize: "4vh",
+              marginRight: "1vw",
             }}
-            variant="outlined"
-          >
-            <AiOutlineGoogle
-              style={{
-                color: "#ffffff",
-                fontSize: "4vh",
-                marginRight: "1vw",
-              }}
-            ></AiOutlineGoogle>
-            <Typography
-              style={{
-                cursor: "default",
-                fontSize: "3vh",
-              }}
-              color={"white"}
-            >
-              google
-            </Typography>
-          </Card>
-         {/* github------------ */}
-         <Card
-            onClick={githubSignIn}
+          ></AiOutlineGoogle>
+          <Typography
             style={{
-              height: "8vh",
-              backgroundColor: "#1b1f23",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "15vw",
+              cursor: "default",
+              fontSize: "3vh",
             }}
-            variant="outlined"
+            color={"white"}
           >
-            <AiFillGithub
-              style={{
-                color: "#ffffff",
-                fontSize: "4vh",
-                marginRight: "1vw",
-              }}
-            ></AiFillGithub>
-            <Typography
-              style={{
-                cursor: "default",
-                fontSize: "3vh",
-              }}
-              color={"white"}
-            >
-              github
-            </Typography>
-          </Card>
+            google
+          </Typography>
+        </CardButton>
 
-
-          {/* twitter------------ */}
-          <Card
-            onClick={twitterSignIn}
+        <CardButton
+          onClick={githubSignIn}
+          style={{
+            backgroundColor: "#1b1f23",
+          }}
+          variant="outlined"
+        >
+          <AiFillGithub
             style={{
-              height: "8vh",
-              backgroundColor: "#00aced",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "15vw",
+              color: "#ffffff",
+              fontSize: "4vh",
+              marginRight: "1vw",
             }}
-            variant="outlined"
+          ></AiFillGithub>
+          <Typography
+            style={{
+              cursor: "default",
+              fontSize: "3vh",
+            }}
+            color={"white"}
           >
-            <AiOutlineTwitter
-              style={{
-                color: "#ffffff",
-                fontSize: "4vh",
-                marginRight: "1vw",
-              }}
-            ></AiOutlineTwitter>
-            <Typography
-              style={{
-                cursor: "default",
-                fontSize: "3vh",
-              }}
-              color={"white"}
-            >
+            github
+          </Typography>
+        </CardButton>
+
+        {/* twitter------------ */}
+        <CardButton
+          onClick={twitterSignIn}
+          style={{
+            backgroundColor: "#00aced",
+          }}
+          variant="outlined"
+        >
+          <AiOutlineTwitter
+            style={{
+              color: "#ffffff",
+              fontSize: "4vh",
+              marginRight: "1vw",
+            }}
+          ></AiOutlineTwitter>
+          <Typography
+            style={{
+              cursor: "default",
+              fontSize: "3vh",
+            }}
+            color={"white"}
+          >
             twitter
-            </Typography>
-          </Card>
- 
-       
-        </Card>
-      </Box>
-      {/* <button onClick={googleSignIn}>google</button> */}
-    </div>
+          </Typography>
+        </CardButton>
+      </CenterCard>
+    </BgBox>
   );
 }
 
