@@ -16,10 +16,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
 
+  socket.on("join_room", (data) => {
+    console.log(data.roomid);
+    socket.join(data.roomid);
+  });
+
   socket.on("send_message", (data) => {
     console.log("data", data);
-
-    socket.broadcast.emit("receive_message", data);
+    socket.to(data.roomid).emit("receive_message", data);
   });
 });
 
