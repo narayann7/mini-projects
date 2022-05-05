@@ -25,6 +25,7 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
+      profile.accessToken = accessToken;
       return done(null, profile);
     }
   )
@@ -39,15 +40,14 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-
-   request.session.user = profile;
-      
       return done(null, profile);
     }
   )
 );
 
 passport.serializeUser((user, done) => {
+  console.log(user);
+
   done(null, user);
 });
 

@@ -6,7 +6,7 @@ const authRoute = require("./routes/auth_routes");
 var cookieSession = require("cookie-session");
 require("./services/passport");
 require("dotenv").config();
-
+const cookieParser = require('cookie-parser')
 app.use(
   cookieSession({
     name: "session",
@@ -14,9 +14,9 @@ app.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-
+app.use(cookieParser());
 app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.session());
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -25,21 +25,25 @@ app.use(
   })
 );
 
+//-------------------------------------- testing ---------------------------------------------------------------------------------
 app.use("/auth", authRoute);
+
+
+
 app.get("/", (req, res) => {
+
+  res.cookie(`hellox`,`encrypted cookie string Value`);
   res.json({
-    name: "catboy",
+
     message: "Welcome to the auth system",
   });
 });
 app.get("/test", (req, res) => {
 
-    console.log(req.user);
 
 
   res.json({
-    name: "catboy",
-    message: "Welcome to the auth system",
+   "cookie":req.cookies
   });
 });
 
