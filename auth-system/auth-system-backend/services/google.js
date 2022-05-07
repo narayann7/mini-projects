@@ -1,6 +1,8 @@
 const { google } = require("googleapis");
 require("dotenv").config();
-
+const express = require("express");
+const app = express();
+const axios = require("axios").default;
 const googleConfig = {
   clientID:
     "184038764932-amin5d0ptq8v7bohisuj3udp29s0piq5.apps.googleusercontent.com",
@@ -11,6 +13,7 @@ const googleConfig = {
 const defaultScope = [
   "https://www.googleapis.com/auth/plus.me",
   "https://www.googleapis.com/auth/userinfo.email",
+  "https://www.googleapis.com/auth/userinfo.profile",
 ];
 
 /*************/
@@ -56,18 +59,37 @@ function urlGoogle() {
 async function getGoogleAccountFromCode(code) {
   const auth = createConnection();
   const { tokens } = await auth.getToken(code);
-  console.log(tokens);
+  console.log(auth.credentials);
+  var getUserUrl =
+    "https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=";
+  getUserUrl += tokens.access_token;
 
-  // auth.setCredentials(tokens);
-  // const plus = getGooglePlusApi(auth);
-  // const me =  plus.people.get({ userId: 'me' });
-  // const userGoogleId = me.data.id;
-  // const userGoogleEmail = me.data.emails && me.data.emails.length && me.data.emails[0].value;
-  // return {
-  //   id: userGoogleId,
-  //   email: userGoogleEmail,
-  //   tokens: tokens,
-  // };
+  var result = await axios.get(getUserUrl);
+  if (result.status === 200) {
+    return result.data;
+  }
+  return null;
 }
+
+app.get("/raw-google", (req, res) => {
+  var url = urlGoogle();
+
+  res.json({
+    message: url,
+  });
+});
+
+app.get("/auth/google/callback", async (req, res) => {
+  // var result=getGoogleAccountFromCode(google);
+  var result = req.url;
+  var code = result.split("code=")[1];
+  var codex = code.split("&scope=")[0];
+  codex = codex.replace(/%2F/g, "/");
+  var data = await getGoogleAccountFromCode(codex);
+  console.log(data);
+  res.json({
+    data,
+  });
+});
 
 module.exports = { urlGoogle, getGoogleAccountFromCode };
