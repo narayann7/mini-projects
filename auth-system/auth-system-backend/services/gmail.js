@@ -1,14 +1,13 @@
-
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 
 // These id's and secrets should come from .env file.
 const CLIENT_ID =
-  "184038764932-amin5d0ptq8v7bohisuj3udp29s0piq5.apps.googleusercontent.com";
-const CLEINT_SECRET = "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";
+  "258326336214-t4njp7ln88d8m9qda1u6figq0ngjhqp1.apps.googleusercontent.com";
+const CLEINT_SECRET = "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";
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 const REFRESH_TOKEN =
-  "1//04j50Gl-FR1pmCgYIARAAGAQSNwF-L9IrfYaW5HJmiN7S0yGTWfZqh9keEJ1z_fkrCjL827ZPkory8Hi-ZvSSDj6WQYbQWdUUu_Q";
+  "1//04A91dhwrWnZeCgYIARAAGAQSNwF-L9Ir_3ui7qMCd_HGOsLuWtHYMJBdMfC8syXEnZ7ItNV9T-NXkS18mSgmjqPd_a0pwQEYGso";
 
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,

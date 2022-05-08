@@ -9,6 +9,7 @@ require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const { urlGoogle, getGoogleAccountFromCode } = require("./services/google");
 const { google } = require("googleapis");
+
 app.use(
   cookieSession({
     name: "session",
@@ -28,20 +29,39 @@ app.use(
 );
 
 //-------------------------------------- testing ---------------------------------------------------------------------------------
-app.use("/auth", authRoute);
+// app.use("/auth", authRoute);
+
 app.get("/", (req, res) => {
-  res.json({
-    message: "Welcome to the auth system xoxo",
-  });
+  res.json({ url });
 });
 
-// app.get("/raw-google", (req, res) => {
-//   var url = urlGoogle();
+// app.get("/sendemail", async (req, res) => {
+//   // const tokens = await getTokenFromUrl(url);
+//   // console.log(tokens);
 
+//   const options = {
+//     to: "codeunique7@gmail.com",
+//     replyTo: "majorskillz432@gmail.com",
+//     subject: "Hello Amit 🚀",
+//     text: "This email is sent from the command line",
+//     textEncoding: "base64",
+//     headers: [
+//       { key: "X-Application-Developer", value: "Amit Agarwal" },
+//       { key: "X-Application-Version", value: "v1.0.0.2" },
+//     ],
+//   };
+//   // var result = await sendMail(options);
 //   res.json({
-//     message: url,
+//     message: "Welcome to the auth system xoxo",
 //   });
 // });
+
+app.get("/test", (req, res) => {
+
+  res.json({
+    message: url,
+  });
+});
 
 // app.get("/auth/google/callback", async (req, res) => {
 //   // var result=getGoogleAccountFromCode(google);
@@ -49,13 +69,16 @@ app.get("/", (req, res) => {
 //   var code = result.split("code=")[1];
 //   var codex = code.split("&scope=")[0];
 //   codex = codex.replace(/%2F/g, "/");
-//   var data = await getGoogleAccountFromCode(codex);
-//   console.log(data);
+
+//   // var data = await getGoogleAccountFromCode(codex);
+//   // console.log(data);
 //   res.json({
-//     data,
+//     hello: "helo",
 //   });
 // });
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("server is running on port 5000...");
 });
+
+
