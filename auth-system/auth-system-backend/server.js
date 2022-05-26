@@ -12,6 +12,7 @@ const { google } = require("googleapis");
 
 app.use(
   cookieSession({
+    
     name: "session",
     keys: ["catboy"],
     maxAge: 24 * 60 * 60 * 100,
@@ -29,7 +30,7 @@ app.use(
 );
 
 //-------------------------------------- testing ---------------------------------------------------------------------------------
-// app.use("/auth", authRoute);
+app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
   res.json({ url });
