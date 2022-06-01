@@ -7,8 +7,9 @@ const CLIENT_ID =
 const CLEINT_SECRET = "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";
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 const REFRESH_TOKEN =
-  "1//046_CqZ7yq7zSCgYIARAAGAQSNwF-L9IrT0mtZ7y28j1v3aay2s0TIM-LlhbgQ35So0DIR3cFLkoxGCWIhEA5XvlLgse1W9ocIe0";
-
+  "1//04dE2tC_jXzEDCgYIARAAGAQSNwF-L9IrqdIpHfF0ZSYq8dw7VvrDoWrar5wQ7tHMaQlCKJi3FHghFsi5ClSrgRd95c2l36Qtyoo";
+  // 4/0AX4XfWgWBCAgQs011LNKz9YkWLYXJTY_qgCOr-Lls4JufDrqnTgaCSIoR36mQkwWdPZERw
+  // 4/0AX4XfWivbT1zVdJTguZcfvWm-nmaOpkHOoU2OwheZmgicGTUXDP7qpguDYYDlMrTY0PDCA
 const oAuth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLEINT_SECRET,
@@ -34,7 +35,7 @@ async function sendMail() {
 
     const mailOptions = {
       from: "codeunique7@gmail.com",
-      to: "laxminarayanreddy432@gmail.com",
+      to: "unweg@hi2.in",
       subject: "Hello from gmail using API",
       text: "your Otp is : 156905",
       html: "<h1>your Otp is : 12345</h1>",
