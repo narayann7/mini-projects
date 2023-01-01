@@ -27,8 +27,8 @@ passport.use(
     function (request, accessToken, refreshToken, profile, done) {
       profile.accessToken = accessToken;
 
-          console.log(profile);
-      
+      console.log(profile);
+
       return done(null, profile);
     }
   )
